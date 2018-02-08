@@ -3,6 +3,9 @@ package student;
 import game.EscapeState;
 import game.ExplorationState;
 
+
+import java.util.List;
+import java.util.Stack;
 public class Explorer {
 
     /**
@@ -36,7 +39,17 @@ public class Explorer {
      * @param state the information available at the current state
      */
     public void explore(ExplorationState state) {
-        //TODO:
+        /**
+     * this stack records each step taken for the path chosen
+     */
+    Stack<Long> route = new Stack<>();
+    /**
+     * this list records the ID of the nodes that have been visited already
+     */
+    List<Long> visited = new ArrayList<>();
+
+    route.add(state.getCurrentLocation());
+    visited.add(state.getCurrentLocation());
     }
 
     /**
