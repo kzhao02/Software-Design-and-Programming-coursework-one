@@ -50,6 +50,20 @@ public class Explorer {
 
     route.add(state.getCurrentLocation());
     visited.add(state.getCurrentLocation());
+    while (!(state.getDistanceToTarget() == 0))
+    {
+      List<NodeStatus> arrange= new ArrayList<>();
+      Collection<NodeStatus> surroundings = state.getNeighbours();
+
+      for (NodeStatus x :: state.getNeighbours)
+      {
+        if (!visited.contains(x.getId()))
+        {
+          arrange.add();
+        }
+      }
+    
+    
     }
 
     /**
