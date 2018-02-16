@@ -38,33 +38,41 @@ public class Explorer {
      *
      * @param state the information available at the current state
      */
-    public void explore(ExplorationState state) {
-        /**
-     * this stack records each step taken for the path chosen
-     */
-    Stack<Long> route = new Stack<>();
-    /**
-     * this list records the ID of the nodes that have been visited already
-     */
-    List<Long> visited = new ArrayList<>();
+public void explore(ExplorationState state)
+  {
 
     route.add(state.getCurrentLocation());
     visited.add(state.getCurrentLocation());
+
     while (!(state.getDistanceToTarget() == 0))
     {
       List<NodeStatus> arrange= new ArrayList<>();
       Collection<NodeStatus> surroundings = state.getNeighbours();
-
-      for (NodeStatus x :: state.getNeighbours)
+      for (NodeStatus x : surroundings)
       {
         if (!visited.contains(x.getId()))
         {
-          arrange.add();
+          arrange.add(x);
         }
       }
-    
-    
+      if (arrange.size() > 0)
+      {
+        List<NodeStatus> sorted = new ArrayList<>();
+        sorted.addAll(arrange);
+        sorted.sort(NodeStatus::compareTo);
+        NodeStatus closest = sorted.get(0);
+        nodeID = closest.getId();
+        route.add(nodeID);
+        visited.add(nodeID);
+      }
+      else
+      {
+        route.pop();
+        nodeID = route.peek();
+      }
+      state.moveTo(nodeID);
     }
+  }
 
     /**
      * Escape from the cavern before the ceiling collapses, trying to collect as much
